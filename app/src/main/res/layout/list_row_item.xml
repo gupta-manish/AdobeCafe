@@ -1,0 +1,116 @@
+<LinearLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+    android:layout_width = "match_parent"
+    android:layout_height = "wrap_content">
+
+
+    <RelativeLayout
+        android:id = "@+id/innerRowRelativeLayout"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content">
+
+        <LinearLayout
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:layout_marginBottom = "10dp"
+            android:layout_marginLeft = "10dp"
+            android:layout_marginRight = "10dp"
+            android:layout_marginTop = "5dp"
+            android:orientation = "horizontal"
+            android:weightSum = "100">
+
+            <RelativeLayout
+                android:layout_width = "0dp"
+                android:layout_height = "wrap_content"
+                android:layout_weight = "100"
+                android:background = "#d0d0d0">
+
+                <RelativeLayout
+                    android:layout_width = "match_parent"
+                    android:layout_height = "wrap_content"
+                    android:layout_margin = "5dp"
+
+                    android:padding = "10dp">
+
+                    <TextView
+                        android:id = "@+id/itemName"
+                        android:layout_width = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:layout_marginTop = "2dp"
+                        android:text = "Item Name"
+                        android:textAppearance = "?android:attr/textAppearanceSmall"
+                        android:textStyle = "bold" />
+
+                    <TextView
+                        android:id = "@+id/priceString"
+                        android:layout_width = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:layout_below = "@id/itemName"
+                        android:layout_marginTop = "2dp"
+                        android:text = "Price:"
+                        android:textAppearance = "?android:attr/textAppearanceSmall"
+                        android:textStyle = "bold" />
+
+
+
+                    <RelativeLayout
+                        android:id = "@+id/quantityLayout"
+                        android:layout_width = "match_parent"
+                        android:layout_height = "40dp"
+                        android:layout_below = "@id/priceString"
+                        android:layout_marginBottom = "5dp"
+                        android:layout_marginLeft = "15dip"
+                        android:layout_marginRight = "15dip"
+                        android:layout_marginTop = "10dp"
+                        android:background = "#FFFFFF"
+                        android:visibility = "visible">
+
+                        <Button
+                            android:id = "@+id/incQuantity"
+                            android:layout_width = "40dp"
+                            android:layout_height = "match_parent"
+                            android:layout_alignParentLeft = "true"
+                            android:text = "+"
+                            android:textAppearance = "?android:attr/textAppearanceLarge"
+                            android:textColor = "#00A1F8"></Button>
+
+                        <Button
+                            android:id = "@+id/decQuantity"
+                            android:layout_width = "40dp"
+                            android:layout_height = "match_parent"
+                            android:layout_alignParentRight = "true"
+                            android:text = "-"
+                            android:textAppearance = "?android:attr/textAppearanceLarge"
+                            android:textColor = "#00A1F8"></Button>
+
+                        <RelativeLayout
+                            android:layout_width = "match_parent"
+                            android:layout_height = "match_parent"
+                            android:layout_toLeftOf = "@id/decQuantity"
+                            android:layout_toRightOf = "@id/incQuantity"
+                            android:background = "#FFFFFF">
+
+                            <TextView
+                                android:id = "@+id/quantity"
+                                android:layout_width = "wrap_content"
+                                android:layout_height = "wrap_content"
+                                android:layout_centerInParent = "true"
+                                android:text = "0"
+                                android:textAppearance = "?android:attr/textAppearanceLarge"
+                                android:textColor = "#00A1F8" />
+
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
