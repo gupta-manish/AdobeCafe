@@ -13,9 +13,15 @@
         android:text="SELECT"
         android:textColor="@color/colorPrimary"/>
 
-    <ListView
+    <jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listView"
-        android:layout_above="@id/select"/>
+        android:layout_above="@id/select"
+        android:id="@+id/main_swipe">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listView"/>
+    </jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout>
 </RelativeLayout>

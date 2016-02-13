@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout;
+
 public class LunchDinnerActivity extends AppCompatActivity {
 
 
@@ -54,8 +56,20 @@ public class LunchDinnerActivity extends AppCompatActivity {
         select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Selected " + lunch_or_dinner + " menu", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Selected " + lunch_or_dinner + " menu", Toast.LENGTH_LONG).show();
                 finish();
+            }
+        });
+
+        final WaveSwipeRefreshLayout waveListener = (WaveSwipeRefreshLayout) findViewById(R.id.main_swipe);
+        waveListener.setOnRefreshListener(new WaveSwipeRefreshLayout.OnRefreshListener() {
+            public void onRefresh() {
+                waveListener.postDelayed(new Runnable() {
+                    public void run() {
+                        waveListener.setRefreshing(false);
+                    }
+                }, 4000);
+
             }
         });
 
