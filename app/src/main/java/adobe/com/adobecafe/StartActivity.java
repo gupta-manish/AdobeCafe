@@ -41,7 +41,6 @@ public class StartActivity extends Activity {
         }
         else
         {
-            Log.d("hahahaha",session_id);
             RequestSingletonQue queue = RequestSingletonQue.getInstance(getApplicationContext());
             String url = "http://hackathon.netai.net/login.php";
             StringRequest postRequest = new StringRequest(Request.Method.POST, url,
@@ -49,6 +48,10 @@ public class StartActivity extends Activity {
                     {
                         @Override
                         public void onResponse(String response) {
+                            if(response == null)
+                            {
+                                Log.d("hahahaha","null");
+                            }
                             if(response.equals("-1")) {
 //                                    Toast toast = Toast.makeText(getApplicationContext(), "Wrong ID/Password", Toast.LENGTH_SHORT);
 //                                    toast.show();
@@ -60,10 +63,14 @@ public class StartActivity extends Activity {
                                 Toast.makeText(getApplicationContext(),"some error occurred", Toast.LENGTH_LONG).show();
                             }
                             else{
-                                Log.d("hahahaha",response);
+
                                 SharedPreferences sharedpreferences = getSharedPreferences(getString(R.string.application), Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedpreferences.edit();
                                 editor.putString(getString(R.string.session_id), response);
+                                Log.d("hahahaha", "jlwdskjwndkoiwdklw");
+                                Log.d("hahahaha", "as,mnkand"+response);
+                                session_id = sharedpreferences.getString(getString(R.string.session_id),"hahaha");
+                                Log.d("hahahaha",session_id);
                                 Intent login = new Intent("ChooseActivity");
                                 startActivity(login);
                             }
