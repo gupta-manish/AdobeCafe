@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class StartActivity extends Activity {
 
-    String session_id;
+    String session_id,email_id,password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +31,8 @@ public class StartActivity extends Activity {
 
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.application), Context.MODE_PRIVATE);
         session_id = sharedPreferences.getString(getString(R.string.session_id),null);
+        email_id = sharedPreferences.getString(getString(R.string.login_id),null);
+        password = sharedPreferences.getString(getString(R.string.password),null);
 
         if(session_id==null)
         {
@@ -41,30 +43,28 @@ public class StartActivity extends Activity {
         {
             Log.d("hahahaha",session_id);
             RequestSingletonQue queue = RequestSingletonQue.getInstance(getApplicationContext());
-            String url = "http://192.168.43.24/hackathon/check_login.php";
+            String url = "http://hackathon.netai.net/login.php";
             StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                     new Response.Listener<String>()
                     {
                         @Override
                         public void onResponse(String response) {
-                            Log.d("hahahaha",response);
-                            try {
-                                JSONObject obj = new JSONObject(response);
-                                int success = obj.getInt("success");
-                                String message = obj.getString("message");
-                                Toast.makeText(getApplicationContext(),message , Toast.LENGTH_LONG).show();
-                                if(success == 1)
-                                {
-                                    Intent login = new Intent("ChooseActivity");
-                                    startActivity(login);
-                                }
-                                else
-                                {
-                                    Intent login = new Intent("LoginActivity");
-                                    startActivity(login);
-                                }
-                            } catch (Throwable t) {
-                                Log.e("My App", "Could not parse malformed JSON: \"" + response + "\"");
+                            if(response.equals("-1")) {
+//                                    Toast toast = Toast.makeText(getApplicationContext(), "Wrong ID/Password", Toast.LENGTH_SHORT);
+//                                    toast.show();
+                                Log.d("D","wrong id passwords");
+                                Toast.makeText(getApplicationContext(),"wrong id password", Toast.LENGTH_LONG).show();
+
+                            } else if(response.equals("0")){
+                                Log.d("gfd","some error occurred");
+                                Toast.makeText(getApplicationContext(),"some error occurred", Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                SharedPreferences sharedpreferences = getSharedPreferences(getString(R.string.application), Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedpreferences.edit();
+                                editor.putString(getString(R.string.session_id), response);
+                                Intent login = new Intent("ChooseActivity");
+                                startActivity(login);
                             }
                         }
                     },
@@ -81,7 +81,8 @@ public class StartActivity extends Activity {
                 protected Map<String, String> getParams()
                 {
                     Map<String, String>  params = new HashMap<String, String>();
-                    params.put("session_id", session_id);
+                    params.put("login_id", email_id);
+                    params.put("password", password);
 
                     return params;
                 }

@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 RequestSingletonQue queue = RequestSingletonQue.getInstance(getApplicationContext());
-                String url = "http://192.168.43.24/hackathon/login.php";
+                String url = "http://hackathon.netai.net/login.php";
                 StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                         new Response.Listener<String>()
                         {
@@ -58,6 +58,8 @@ public class LoginActivity extends AppCompatActivity {
                                     SharedPreferences.Editor editor = sharedpreferences.edit();
                                     Log.d("hahahaha",response);
                                     editor.putString(getString(R.string.session_id), response);
+                                    editor.putString(getString(R.string.login_id),emailID.getText().toString());
+                                    editor.putString(getString(R.string.password),password.getText().toString());
                                     editor.commit();
                                     Intent login = new Intent("ChooseActivity");
                                     startActivity(login);

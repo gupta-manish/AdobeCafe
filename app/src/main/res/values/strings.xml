@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">AdobeCafe</string>
-    <string name="session_id">SessionId</string>
+    <string name="session_id">SESSION_ID</string>
+    <string name="login_id">LOGIN_ID</string>
+    <string name="password">PASSWORD</string>
     <string name="application">AdobeCafe</string>
 </resources>
