@@ -6,16 +6,37 @@
     tools:context="adobe.com.adobecafe.OrderActivity">
 
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/order_button"
-        android:layout_alignParentBottom="true"
-        android:text="Order"
-        android:textColor="@color/colorPrimary"/>
-    <ListView
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/order_button"
-        android:id="@+id/listView" />
+        android:id="@+id/page_layout"
+        android:visibility="invisible">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/order_button"
+            android:layout_alignParentBottom="true"
+            android:text="Order"
+            android:textColor="@color/colorPrimary"/>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/order_button"
+            android:id="@+id/listView" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/wait_layout"
+        android:background="@color/colorPrimary"
+        android:alpha="0.5">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
 </RelativeLayout>

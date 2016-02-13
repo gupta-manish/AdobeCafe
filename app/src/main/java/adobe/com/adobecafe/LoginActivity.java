@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
                         {
                             @Override
                             public void onResponse(String response) {
+                                response = sanitizeString(response);
                                 if(response.equals("-1")) {
 //                                    Toast toast = Toast.makeText(getApplicationContext(), "Wrong ID/Password", Toast.LENGTH_SHORT);
 //                                    toast.show();
@@ -88,5 +89,10 @@ public class LoginActivity extends AppCompatActivity {
                 queue.add(postRequest);
             }
         });
+    }
+
+    String sanitizeString(String response)
+    {
+        return response.replace("\r\n<!-- Hosting24 Analytics Code -->\r\n<script type=\"text/javascript\" src=\"http://stats.hosting24.com/count.php\"></script>\r\n<!-- End Of Analytics Code -->\r\n","");
     }
 }

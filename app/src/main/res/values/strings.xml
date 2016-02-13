@@ -4,4 +4,5 @@
     <string name="login_id">LOGIN_ID</string>
     <string name="password">PASSWORD</string>
     <string name="application">AdobeCafe</string>
+    <string name="order_number">order_number</string>
 </resources>

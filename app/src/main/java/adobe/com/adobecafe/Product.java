@@ -15,4 +15,5 @@ public class Product
         this.dish = dish;
         this.quantity = quantity;
     }
+
 }

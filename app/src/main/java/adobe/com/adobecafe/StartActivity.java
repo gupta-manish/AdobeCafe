@@ -48,10 +48,7 @@ public class StartActivity extends Activity {
                     {
                         @Override
                         public void onResponse(String response) {
-                            if(response == null)
-                            {
-                                Log.d("hahahaha","null");
-                            }
+                            response = sanitizeString(response);
                             if(response.equals("-1")) {
 //                                    Toast toast = Toast.makeText(getApplicationContext(), "Wrong ID/Password", Toast.LENGTH_SHORT);
 //                                    toast.show();
@@ -81,6 +78,8 @@ public class StartActivity extends Activity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Log.d("ERROR","error => "+error.toString());
+                            Toast.makeText(getApplicationContext(),"some error occurred", Toast.LENGTH_LONG).show();
+                            finish();
                         }
                     }
             ) {
@@ -97,5 +96,10 @@ public class StartActivity extends Activity {
             };
             queue.add(postRequest);
         }
+    }
+
+    String sanitizeString(String response)
+    {
+        return response.replace("\r\n<!-- Hosting24 Analytics Code -->\r\n<script type=\"text/javascript\" src=\"http://stats.hosting24.com/count.php\"></script>\r\n<!-- End Of Analytics Code -->\r\n","");
     }
 }
