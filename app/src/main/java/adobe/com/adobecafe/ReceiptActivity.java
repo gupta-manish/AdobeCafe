@@ -21,6 +21,7 @@ public class ReceiptActivity extends AppCompatActivity {
         setContentView(R.layout.activity_receipt);
         String jsonOrderList = getIntent().getStringExtra("productlist");
         listView = (ListView)findViewById(R.id.listView);
+        setTitle("Receipt");
         Gson gson = new Gson();
         Type type = new TypeToken<List<Product>>(){}.getType();
         ArrayList<Product> orderList = gson.fromJson(jsonOrderList, type);

@@ -29,7 +29,8 @@ public class ChooseActivity extends AppCompatActivity {
         lunch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent lunch = new Intent("LunchActivity");
+                Intent lunch = new Intent("LunchDinnerMenuChooseActivity");
+                lunch.putExtra("lunch_or_dinner","lunch");
                 startActivity(lunch);
             }
         });
@@ -37,7 +38,8 @@ public class ChooseActivity extends AppCompatActivity {
         dinner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent dinner = new Intent("DinnerActivity");
+                Intent dinner = new Intent("LunchDinnerMenuChooseActivity");
+                dinner.putExtra("lunch_or_dinner","dinner");
                 startActivity(dinner);
             }
         });

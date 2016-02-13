@@ -39,16 +39,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".LunchActivity">
+        <activity android:name=".LunchDinnerActivity">
             <intent-filter>
-                <action android:name="LunchActivity" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".DinnerActivity">
-            <intent-filter>
-                <action android:name="DinnerActivity" />
+                <action android:name="LunchDinnerActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -56,6 +49,13 @@
         <activity android:name=".ReceiptActivity">
             <intent-filter>
                 <action android:name="ReceiptActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".LunchDinnerMenuChooseActivity">
+            <intent-filter>
+                <action android:name="LunchDinnerMenuChooseActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

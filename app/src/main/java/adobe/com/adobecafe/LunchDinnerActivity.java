@@ -7,13 +7,19 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class DinnerActivity extends AppCompatActivity {
+public class LunchDinnerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dinner);
+        setContentView(R.layout.activity_lunch);
         final ListView listview = (ListView) findViewById(R.id.listView);
+
+        String lunch_or_dinner = getIntent().getStringExtra("lunch_or_dinner");
+        String menu = getIntent().getStringExtra("menu");
+
+        setTitle(lunch_or_dinner + " " + menu);
+
         String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
                 "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
                 "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
@@ -28,5 +34,7 @@ public class DinnerActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, list);
 
         listview.setAdapter(adapter);
+
+
     }
 }

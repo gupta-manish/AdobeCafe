@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         emailID = (EditText) findViewById(R.id.emailId);
         password = (EditText) findViewById(R.id.password);
         loginButton = (Button) findViewById(R.id.button);
-
+        setTitle("Sign In");
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 RequestSingletonQue queue = RequestSingletonQue.getInstance(getApplicationContext());

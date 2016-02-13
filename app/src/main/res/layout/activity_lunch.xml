@@ -3,10 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="adobe.com.adobecafe.LunchActivity">
+    tools:context=".LunchDinnerActivity">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:text="SELECT"
+        android:textColor="@color/colorPrimary"/>
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listView"/>
+        android:id="@+id/listView"
+        android:layout_above="@id/button"/>
 </RelativeLayout>

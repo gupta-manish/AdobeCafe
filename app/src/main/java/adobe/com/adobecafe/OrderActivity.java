@@ -39,6 +39,7 @@ public class OrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
 
+        setTitle("Order");
         a = new ArrayList<>();
         a.add(new Product("asasas","saasasas","0"));
         a.add(new Product("kjfo","saasasas","0"));
