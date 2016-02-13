@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="100">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="50"
+        android:text="sdsdsdsd"
+
+        android:padding="5dp"
+        android:id="@+id/dish_name"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:text="x3"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_weight="25"
+        android:id="@+id/quantity"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:text="20"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_weight="25"
+        android:id="@+id/price"/>
+
+</LinearLayout>

@@ -60,6 +60,7 @@ public class StartActivity extends Activity {
                                 Toast.makeText(getApplicationContext(),"some error occurred", Toast.LENGTH_LONG).show();
                             }
                             else{
+                                Log.d("hahahaha",response);
                                 SharedPreferences sharedpreferences = getSharedPreferences(getString(R.string.application), Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedpreferences.edit();
                                 editor.putString(getString(R.string.session_id), response);
