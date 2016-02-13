@@ -16,6 +16,8 @@ public class LunchDinnerMenuChooseActivity extends AppCompatActivity implements 
         setContentView(R.layout.activity_lunch_dinner_menu_choose);
         lunch_or_dinner = getIntent().getStringExtra("lunch_or_dinner");
 
+        setTitle("Choose Menu");
+
         combo = (Button)findViewById(R.id.combo);
         healthy = (Button)findViewById(R.id.healthy);
         delight = (Button)findViewById(R.id.delight);
