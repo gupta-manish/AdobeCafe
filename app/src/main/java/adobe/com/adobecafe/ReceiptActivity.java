@@ -46,12 +46,15 @@ public class ReceiptActivity extends AppCompatActivity {
         wait_layout = (RelativeLayout)findViewById(R.id.wait_layout);
         total_cost = (TextView)findViewById(R.id.total_cost);
         context = this;
-        /*SharedPreferences prefs = getApplicationContext().getSharedPreferences(getString(R.string.application), Context.MODE_PRIVATE);
+
+        wait_layout.setVisibility(View.INVISIBLE);
+        page_layout.setVisibility(View.VISIBLE);
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences(getString(R.string.application), Context.MODE_PRIVATE);
         int ord = prefs.getInt(getString(R.string.order_number),23);
         order_number.setText("ORDER NO : " + ord++);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt(getString(R.string.order_number),ord);
-        */
+
         int tc = 0;
         String jsonOrderList = getIntent().getStringExtra("productlist");
         listView = (ListView)findViewById(R.id.listView);
@@ -62,10 +65,10 @@ public class ReceiptActivity extends AppCompatActivity {
         for(int i=0;i<orderList.size()-1;i++)
         {
             tc = tc + Integer.parseInt(orderList.get(i).price)*Integer.parseInt(orderList.get(i).quantity);
-            sendString = sendString + orderList.get(i).dish+";"+orderList.get(i).quantity+"|";
+            //sendString = sendString + orderList.get(i).dish+";"+orderList.get(i).quantity+"|";
         }
         tc = tc + Integer.parseInt(orderList.get(orderList.size()-1).price)*Integer.parseInt(orderList.get(orderList.size()-1).quantity);
-        sendString = sendString + orderList.get(orderList.size()-1).dish+";"+orderList.get(orderList.size()-1).quantity;
+        //sendString = sendString + orderList.get(orderList.size()-1).dish+";"+orderList.get(orderList.size()-1).quantity;
 
 
 
@@ -73,7 +76,7 @@ public class ReceiptActivity extends AppCompatActivity {
         final ReceiptListAdapter orderListAdapter = new ReceiptListAdapter(this,getItemId(orderList.size()),orderList);
         listView.setAdapter(orderListAdapter);
 
-        RequestSingletonQue queue = RequestSingletonQue.getInstance(getApplicationContext());
+        /*RequestSingletonQue queue = RequestSingletonQue.getInstance(getApplicationContext());
         String url = "http://hackathon.netai.net/send_snacks.php";
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>()
@@ -103,7 +106,7 @@ public class ReceiptActivity extends AppCompatActivity {
                 return params;
             }
         };
-        queue.add(postRequest);
+        queue.add(postRequest);*/
 
     }
 
