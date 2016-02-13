@@ -60,6 +60,7 @@ public class OrderListAdapter extends ArrayAdapter<Integer>
         final TextView quantityView = (TextView) convertView
                 .findViewById(R.id.quantity);
 
+        quantityView.setText(quantity[position] + "");
 
         incQuantity.setOnClickListener(new View.OnClickListener() {
 
