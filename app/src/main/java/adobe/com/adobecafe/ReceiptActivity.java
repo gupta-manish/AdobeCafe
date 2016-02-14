@@ -54,6 +54,7 @@ public class ReceiptActivity extends AppCompatActivity {
         order_number.setText("ORDER NO : " + ord++);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt(getString(R.string.order_number),ord);
+        editor.apply();
 
         int tc = 0;
         String jsonOrderList = getIntent().getStringExtra("productlist");

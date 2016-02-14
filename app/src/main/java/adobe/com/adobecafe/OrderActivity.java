@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class OrderActivity extends AppCompatActivity {
+public class OrderActivity extends AppCompatActivity implements OrderListAdapter.OrderListAdapterInterface {
 
     ListView listView;
     String session_id;
@@ -56,6 +56,7 @@ public class OrderActivity extends AppCompatActivity {
         wait_layout = (RelativeLayout)findViewById(R.id.wait_layout);
         listView = (ListView)findViewById(R.id.listView);
         orderButton = (Button)findViewById(R.id.order_button);
+        orderButton.setEnabled(false);
         orderList = new ArrayList<>();
         /*a = new ArrayList<>();
         a.add(new Product("Egg Chowmein","20","0"));
@@ -81,11 +82,26 @@ public class OrderActivity extends AppCompatActivity {
                         try
                         {
                             JSONObject obj = new JSONObject(response);
-                            JSONArray arr = obj.getJSONArray("snacks");
-                            for(int i =0;i<arr.length();i++)
+                            String success = obj.getString("success");
+                            if(success.contains("0"))
                             {
-                                orderList.add(new Product(arr.getJSONObject(i).getString("name"),arr.getJSONObject(i).getString("price"),"0"));
+                                orderList.add(new Product("Egg Chowmein","20","0"));
+                                orderList.add(new Product("Paneer Kulcha","16","0"));
+                                orderList.add(new Product("Papri Chaat","20","0"));
+                                orderList.add(new Product("Omelette","20","0"));
+                                orderList.add(new Product("Half Fry","16","0"));
+                                orderList.add(new Product("Full fry","20","0"));
+                                orderList.add(new Product("Bread Pakoda","18","0"));
                             }
+                            else
+                            {
+                                JSONArray arr = obj.getJSONArray("snacks");
+                                for(int i =0;i<arr.length();i++)
+                                {
+                                    orderList.add(new Product(arr.getJSONObject(i).getString("name"),arr.getJSONObject(i).getString("price"),"0"));
+                                }
+                            }
+
                         }
                         catch(JSONException e)
                         {
@@ -150,6 +166,11 @@ public class OrderActivity extends AppCompatActivity {
     String sanitizeString(String response)
     {
         return response.replace("\r\n<!-- Hosting24 Analytics Code -->\r\n<script type=\"text/javascript\" src=\"http://stats.hosting24.com/count.php\"></script>\r\n<!-- End Of Analytics Code -->\r\n","");
+    }
+
+    public void setOrderClickable(boolean b)
+    {
+        orderButton.setEnabled(b);
     }
 }
 

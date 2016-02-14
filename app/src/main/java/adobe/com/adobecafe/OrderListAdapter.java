@@ -27,16 +27,21 @@ public class OrderListAdapter extends ArrayAdapter<Integer>
     LayoutInflater layInf;
     private ArrayList<Product> productList;
     private int[] quantity;
+    int sum;
+    OrderListAdapterInterface orderListAdapterInterface;
+
     String response;
     public OrderListAdapter(Context context, Integer[] itemId,
                                ArrayList<Product> productList) {
         super(context, R.layout.activity_order, R.id.listView, itemId);
         // TODO Auto-generated constructor stub
         this.context = context;
+        sum = 0;
         quantity = new int[productList.size()];
         this.productList = productList;
         layInf = (LayoutInflater) this.context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        orderListAdapterInterface = (OrderListAdapterInterface)context;
     }
 
     @Override
@@ -67,6 +72,11 @@ public class OrderListAdapter extends ArrayAdapter<Integer>
             @Override
             public void onClick(View arg0) {
                 quantity[position]++;
+                sum++;
+                if(sum>0)
+                {
+                    orderListAdapterInterface.setOrderClickable(true);
+                }
                 quantityView.setText(quantity[position] + "");
 
             }
@@ -81,6 +91,11 @@ public class OrderListAdapter extends ArrayAdapter<Integer>
                     return;
                 }
                 quantity[position]--;
+                sum--;
+                if(sum <= 0)
+                {
+                    orderListAdapterInterface.setOrderClickable(false);
+                }
                 quantityView.setText(quantity[position] + "");
             }
         });
@@ -97,5 +112,9 @@ public class OrderListAdapter extends ArrayAdapter<Integer>
         return quantity;
     }
 
+    public interface OrderListAdapterInterface
+    {
+        void setOrderClickable(boolean b);
+    }
 
 }
