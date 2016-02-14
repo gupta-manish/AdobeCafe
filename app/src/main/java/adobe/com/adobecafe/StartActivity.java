@@ -75,8 +75,15 @@ public class StartActivity extends Activity {
 
         if(session_id==null)
         {
-            Intent login = new Intent("LoginActivity");
-            startActivity(login);
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                public void run() {
+
+                    Intent login = new Intent("LoginActivity");
+                    startActivity(login);
+                    finish();
+                }
+            }, 2500);
         }
         else
         {
