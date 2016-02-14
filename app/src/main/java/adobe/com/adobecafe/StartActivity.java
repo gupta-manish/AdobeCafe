@@ -30,7 +30,6 @@ import io.saeid.fabloading.LoadingView;
 public class StartActivity extends Activity {
 
     String session_id,email_id,password;
-    String response;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,37 +86,38 @@ public class StartActivity extends Activity {
                     new Response.Listener<String>()
                     {
                         @Override
-                        public void onResponse(String res) {
-                            response = res;
-                            Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                public void run() {
-                                    response = sanitizeString(response);
-                                    if(response.equals("-1")) {
+                        public void onResponse(String response) {
+                            response = sanitizeString(response);
+                            if(response.equals("-1")) {
 //                                    Toast toast = Toast.makeText(getApplicationContext(), "Wrong ID/Password", Toast.LENGTH_SHORT);
 //                                    toast.show();
-                                        Log.d("D","wrong id passwords");
-                                        Toast.makeText(getApplicationContext(),"wrong id password", Toast.LENGTH_LONG).show();
+                                Log.d("D","wrong id passwords");
+                                Toast.makeText(getApplicationContext(),"wrong id password", Toast.LENGTH_LONG).show();
 
-                                    } else if(response.equals("0")){
-                                        Log.d("gfd","some error occurred");
-                                        Toast.makeText(getApplicationContext(),"some error occurred", Toast.LENGTH_LONG).show();
-                                    }
-                                    else{
+                            } else if(response.equals("0")){
+                                Log.d("gfd","some error occurred");
+                                Toast.makeText(getApplicationContext(),"some error occurred", Toast.LENGTH_LONG).show();
+                            }
+                            else{
 
-                                        SharedPreferences sharedpreferences = getSharedPreferences(getString(R.string.application), Context.MODE_PRIVATE);
-                                        SharedPreferences.Editor editor = sharedpreferences.edit();
-                                        editor.putString(getString(R.string.session_id), response);
-                                        Log.d("hahahaha", "jlwdskjwndkoiwdklw");
-                                        Log.d("hahahaha", "as,mnkand"+response);
-                                        session_id = sharedpreferences.getString(getString(R.string.session_id),"hahaha");
-                                        Log.d("hahahaha",session_id);
+                                SharedPreferences sharedpreferences = getSharedPreferences(getString(R.string.application), Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedpreferences.edit();
+                                editor.putString(getString(R.string.session_id), response);
+                                Log.d("hahahaha", "jlwdskjwndkoiwdklw");
+                                Log.d("hahahaha", "as,mnkand"+response);
+                                session_id = sharedpreferences.getString(getString(R.string.session_id),"hahaha");
+                                Log.d("hahahaha", session_id);
+
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    public void run() {
+
                                         Intent login = new Intent("ChooseActivity");
                                         startActivity(login);
                                         finish();
                                     }
-                                }
-                            }, 3000);
+                                }, 2500);
+                            }
 
 
                         }
